@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "LS8WePtVi5U=",
+  "dgSpecHash": "v4eoyfELZgg=",
   "success": true,
-  "projectFilePath": "C:\\Source\\C#_Library_Group_Project\\Library C# Group Project\\Library C# Group Project.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\iggyp\\source\\repos\\C#\\C# Library\\C-Library-Group-Project\\Library C# Group Project\\Library C# Group Project.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\iggyp\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.15\\microsoft.windowsdesktop.app.ref.9.0.15.nupkg.sha512",
+    "C:\\Users\\iggyp\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.15\\microsoft.netcore.app.ref.9.0.15.nupkg.sha512",
+    "C:\\Users\\iggyp\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.15\\microsoft.aspnetcore.app.ref.9.0.15.nupkg.sha512",
+    "C:\\Users\\iggyp\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\9.0.15\\microsoft.netcore.app.host.win-x64.9.0.15.nupkg.sha512"
+  ],
   "logs": []
 }
