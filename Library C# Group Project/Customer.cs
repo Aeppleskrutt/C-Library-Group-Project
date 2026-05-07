@@ -11,13 +11,23 @@ namespace Library_C__Group_Project
         public string Name { get; set; }
         public string CustomerID { get; set; }
         public List<Book> LoanedBooks { get; set; } = new List<Book>();
+
+        public void AddLoan(Book book)
+        {
+            LoanedBooks.Add(book);
+        }
+
+        public void RemoveLoan(Book book)
+        {
+            LoanedBooks.Remove(book);
+        }
+
+        public void GetInfo()
+        {
+            foreach (Book book in LoanedBooks)
+            {
+                Console.WriteLine($"Title: {book.Title}, Author: {book.Author}, ISBN: {book.ISBN}");
+            }
+        }
     }
-
-    //To Do: Methods for this class
-
-    //AddLoan();
-
-    //RemoveLoan();
-
-    //GetInfo();
 }
