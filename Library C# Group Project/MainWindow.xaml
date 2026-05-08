@@ -7,6 +7,31 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <StackPanel Margin="20">
 
+            <TextBlock Text="Library Management System"
+               FontSize="24"
+               Margin="0,0,0,20"
+               TextAlignment="Center"/>
+
+            <Button Name="BookButton"
+            Click="BookButton_Click"
+            Content="Manage Books"
+            Height="40"
+            Margin="50,0,50,15"/>
+
+            <Button Name="CustomerButton"
+            Click="CustomerButton_Click"
+            Content="Manage Customers"
+            Height="40"
+            Margin="50,0,50,15"/>
+
+            <Button Name="ReportButton"
+            Click="ReportButton_Click"
+            Content="Reports"
+            Height="40"
+            Margin="50,0,50,15" />
+
+        </StackPanel>
     </Grid>
 </Window>

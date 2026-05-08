@@ -21,7 +21,7 @@ namespace Library_C__Group_Project
         }
         public void AddBook(string title, string author, string isbn)
         {
-            Books.Add(new Book { Title = title, Author = author, ISBN = isbn, Status = true });
+            Books.Add(new Book(title, author, isbn));
         }
         public void RemoveBook(string isbn)
         {

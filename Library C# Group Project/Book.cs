@@ -12,11 +12,28 @@ namespace Library_C__Group_Project
         public string Author { get; set; }
         public string ISBN { get; set; }
         public bool Status { get; set; } // true for available, false for checked out
+        public DateTime? LoanDate { get; set; } // Used to calculate due date and overdue fees
+
+
+        public Book(string title, string author, string isbn)
+        {
+            Title = title;
+            Author = author;
+            ISBN = isbn;
+            Status = true; // Default a book to available whenever created 
+            LoanDate = null; // Default to null, will be set whenever book is loaned out
+        }
+
+        public string GetDetails() // Gets details of the book directly formatted
+        {
+            string statusText = Status ? "Available" : "Checked Out";
+            return $"{Title} by {Author} | ISBN: {ISBN} | Status: {statusText}";
+        }
+
+        public void setStatus(bool status) // Changes a books status to inputed status
+        {
+            Status = status;
+        }
+
     }
-
-    //To Do: Methods for this class
-
-    //GetDetails(); 
-
-    //SetStatus();
 }
