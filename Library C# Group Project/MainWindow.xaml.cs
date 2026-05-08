@@ -20,4 +20,13 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
     }
+
+    private void BookButton_Click(object sender, RoutedEventArgs e)
+    {
+        BookWindow bookWindow = new BookWindow();
+        bookWindow.Show();
+
+    }
+   
+    
 }
