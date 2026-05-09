@@ -6,13 +6,15 @@ using System.Threading.Tasks;
 
 namespace Library_C__Group_Project
 {
-    class Book
+    public class Book
     {
         public string Title { get; set; }
         public string Author { get; set; }
         public string ISBN { get; set; }
         public bool Status { get; set; } // true for available, false for checked out
         public DateTime? LoanDate { get; set; } // Used to calculate due date and overdue fees
+        public Queue<Customer> ReservationQueue { get; set; }
+        = new Queue<Customer>(); //Too keep a queue of customers who reserved a specific book.
 
 
         public Book(string title, string author, string isbn)
@@ -33,6 +35,11 @@ namespace Library_C__Group_Project
         public void setStatus(bool status) // Changes a books status to inputed status
         {
             Status = status;
+        }
+        public override string ToString() //??
+        {
+            string statusText = Status ? "Available" : "Checked Out";
+            return $"{Title} by {Author} | ISBN: {ISBN} | Status: {statusText}";
         }
 
     }

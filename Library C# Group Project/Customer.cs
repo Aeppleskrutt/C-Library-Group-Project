@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Library_C__Group_Project
 {
-    class Customer
+    public class Customer 
     {
         public string Name { get; set; }
         public string CustomerID { get; set; }
