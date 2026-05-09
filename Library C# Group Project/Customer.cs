@@ -12,6 +12,12 @@ namespace Library_C__Group_Project
         public string CustomerID { get; set; }
         public List<Book> LoanedBooks { get; set; } = new List<Book>();
 
+        public Customer(string name, string customerID)
+        {
+            Name = name;
+            CustomerID = customerID;
+        }
+
         public void AddLoan(Book book)
         {
             LoanedBooks.Add(book);
