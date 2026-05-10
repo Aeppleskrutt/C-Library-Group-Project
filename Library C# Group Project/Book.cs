@@ -34,6 +34,14 @@ namespace Library_C__Group_Project
         {
             Status = status;
         }
+<<<<<<< Updated upstream
+=======
+        public override string ToString() //To let book information be shown properaly in GUI
+        {
+            string statusText = Status ? "Available" : "Checked Out";
+            return $"{Title} by {Author} | ISBN: {ISBN} | Status: {statusText}";
+        }
+>>>>>>> Stashed changes
 
     }
 }

@@ -21,12 +21,29 @@ public partial class MainWindow : Window
         InitializeComponent();
     }
 
+<<<<<<< Updated upstream
+=======
+    private LibraryLogic library = new LibraryLogic();
+>>>>>>> Stashed changes
     private void BookButton_Click(object sender, RoutedEventArgs e)
     {
         BookWindow bookWindow = new BookWindow();
         bookWindow.Show();
-
     }
+<<<<<<< Updated upstream
    
     
+=======
+
+    private void CustomerButton_Click(object sender, RoutedEventArgs e)
+    {
+        CustomerWindow customerWindow = new CustomerWindow(library);
+        customerWindow.Show();
+    }
+
+    private void ReportButton_Click(object sender, RoutedEventArgs e)
+    {
+
+    }
+>>>>>>> Stashed changes
 }
