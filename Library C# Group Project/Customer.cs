@@ -12,11 +12,7 @@ namespace Library_C__Group_Project
         public string CustomerID { get; set; }
         public List<Book> LoanedBooks { get; set; } = new List<Book>();
 
-<<<<<<< Updated upstream
         public Customer (string name, string customerID)
-=======
-        public Customer(string name, string customerID)
->>>>>>> Stashed changes
         {
             Name = name;
             CustomerID = customerID;
