@@ -23,5 +23,39 @@ namespace Library_C__Group_Project
             return customerExists;
         }   
 
+        public bool CheckIfBookExists(List<Book> books, string title)
+        {
+            bool bookExists = false;
+            foreach (Book book in books)
+            {
+                if (book.Title == title)
+                {
+                    bookExists = true;
+                    break;
+                }
+            }
+
+            return bookExists;
+        }
+
+        public string ProcessString()
+        {
+            string checkThisString;
+            do
+            {
+                checkThisString = Console.ReadLine();
+                if (String.IsNullOrEmpty(checkThisString))
+                {
+                    Console.WriteLine("The string can't be empty!");
+                }
+                else
+                {
+                    break;
+                }
+            } while (true);
+
+            return checkThisString;
+        }
+
     }
 }
