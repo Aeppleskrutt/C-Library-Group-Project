@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -39,11 +40,15 @@ namespace Library_C__Group_Project
             {
                 DateTime? _loanDate = book.LoanDate;
                 DateTime? returnDate = _loanDate?.AddDays(30);
-                double overdueDays = returnDate.HasValue ? (DateTime.Now.Date - returnDate.Value.Date).TotalDays : 0;
+                double overDueDays = returnDate.HasValue ? (DateTime.Now.Date - returnDate.Value.Date).TotalDays : 0;
 
-                if (overdueDays > 0)
+                while (true)
                 {
-                    LateFee += overdueDays * 10;
+                    if (overDueDays > 1)
+                    {
+                        LateFee += overDueDays * 10;
+                        break;
+                    }
                 }
             }
         }
