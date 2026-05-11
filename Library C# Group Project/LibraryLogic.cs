@@ -59,5 +59,15 @@ namespace Library_C__Group_Project
                 customer.GetInfo();
             }
         }
+
+        public void GetBookByName(string title, string author)
+        {
+            Book book = Books.FirstOrDefault(b => b.Title == title || b.Author == author);
+            if (book != null)
+            {
+                book.GetDetails();
+            }
+            
+        }
     }
 }

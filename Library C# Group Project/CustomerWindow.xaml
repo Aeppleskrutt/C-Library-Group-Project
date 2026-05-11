@@ -71,7 +71,7 @@
 
                 <ComboBox Name="AvailableBooksComboBox"
                   Height="35"
-                  Margin="0,0,0,10"/>
+                  Margin="0,0,0,10" SelectionChanged="AvailableBooksComboBox_SelectionChanged"/>
 
                 <Button Name="LoanBookButton"
                 Content="Loan Selected Book"
