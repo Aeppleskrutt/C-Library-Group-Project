@@ -18,15 +18,25 @@ public partial class MainWindow : Window
 {
     public MainWindow()
     {
+
         InitializeComponent();
     }
-
+    private LibraryLogic library = new LibraryLogic();
     private void BookButton_Click(object sender, RoutedEventArgs e)
     {
-        BookWindow bookWindow = new BookWindow();
+        BookWindow bookWindow = new BookWindow(library);
         bookWindow.Show();
 
     }
-   
-    
+
+    private void CustomerButton_Click(object sender, RoutedEventArgs e)
+    {
+        CustomerWindow customerWindow = new CustomerWindow();
+        customerWindow.Show();
+    }
+
+    private void ReportButton_Click(object sender, RoutedEventArgs e)
+    {
+
+    }
 }

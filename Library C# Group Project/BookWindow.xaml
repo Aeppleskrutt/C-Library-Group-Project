@@ -13,6 +13,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
@@ -35,7 +36,7 @@
             Height="30"
             Margin="50,10,50,10" Click="AddBookButton_Click"/>
             
-            <!-- Testing so temporary. -->
+            
             <Button Grid.Row="2"
             Name="RemoveBookButton"
             Content="Remove Selected Book"
@@ -43,7 +44,28 @@
             Margin="50,0,50,10"
             Click="RemoveBookButton_Click"/>
             
-            <ListBox Grid.Row="3"
+            <StackPanel Grid.Row="3"
+            Orientation="Horizontal"
+            Margin="0,10,0,10">
+
+                <TextBox Name="SearchTextBox"
+             Width="200"
+             Height="20"
+             Margin="0,0,10,0"/>
+
+                <Button Name="SearchButton"
+            Content="Search"
+            Width="70"
+            Click="SearchButton_Click"/>
+
+                <Button Name="ShowAllButton"
+            Content="Show All"
+            Width="70"
+            Margin="10,0,0,0"
+            Click="ShowAllButton_Click"/>
+
+            </StackPanel>
+            <ListBox Grid.Row="4"
              Name="BooksListBox"/>
 
         </Grid>

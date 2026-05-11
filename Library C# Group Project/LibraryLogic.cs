@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Library_C__Group_Project
 {
-    class LibraryLogic
+    public class LibraryLogic
     {
         public List<Book> Books { get; set; } = new List<Book>();
         public List<Customer> Customers { get; set; } = new List<Customer>();

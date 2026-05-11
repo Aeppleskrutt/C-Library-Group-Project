@@ -16,14 +16,25 @@ using System.Windows.Shapes;
 
 namespace Library_C__Group_Project
 {
+
     public partial class BookWindow : Window
     {
-        private List<Book> books = new List<Book>(); //Used for testing the program
-        public BookWindow()
+        private LibraryLogic library;
+        public BookWindow(LibraryLogic libraryLogic)
         {
             InitializeComponent();
+            library = libraryLogic;
+            RefreshBookList(); //Refreshes book list on launch, this is to ensure starting a window after closing will still show all books
         }
+        private void RefreshBookList()
+        {
+            BooksListBox.Items.Clear(); //Clears the dispaly box for books
 
+            foreach (Book book in library.Books)
+            {
+                BooksListBox.Items.Add(book);
+            }
+        }
         private void AddBookButton_Click(object sender, RoutedEventArgs e)
         {
             string title = TitleTextBox.Text;
@@ -42,11 +53,11 @@ namespace Library_C__Group_Project
                 return;
             }
 
-            Book newBook = new Book(title, author, isbn);
-            books.Add(newBook); //Used for testing the program
-            BooksListBox.Items.Add(newBook.GetDetails());
+            
+            library.AddBook(title, author, isbn); //Calls method to add book
+            RefreshBookList();
 
-            TitleTextBox.Clear();
+            TitleTextBox.Clear(); //Clears text boxes to avoid confusion for user
             AuthorTextBox.Clear();
             ISBNTextBox.Clear();
         }
@@ -62,11 +73,26 @@ namespace Library_C__Group_Project
                     MessageBoxImage.Warning);
                 return;
             }
-           
-            int selectedIndex = BooksListBox.SelectedIndex; //Which book in the GUI list is selected
-            books.RemoveAt(selectedIndex); //Removes said book from the GUI.
-            BooksListBox.Items.RemoveAt(selectedIndex); //Removes said book from the list.
+            Book selectedBook = (Book)BooksListBox.SelectedItem;
+            library.RemoveBook(selectedBook.ISBN); //Removes said book from the library.
+            RefreshBookList();
 
+
+        }
+
+        private void SearchButton_Click(object sender, RoutedEventArgs e)
+        {
+            string searchText = SearchTextBox.Text;
+            BooksListBox.Items.Clear();
+
+            //Need a method, likely in Librarylogic that searches the list.
+            //Will update whenever said method is created
+
+        }
+
+        private void ShowAllButton_Click(object sender, RoutedEventArgs e)
+        {
+            RefreshBookList();
         }
     }
 }
