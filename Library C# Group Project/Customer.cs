@@ -11,7 +11,7 @@ namespace Library_C__Group_Project
     {
         public string Name { get; set; }
         public string CustomerID { get; set; }
-        public int LateFee { get; set; }
+        public double LateFee { get; set; }
         public List<Book> LoanedBooks { get; set; } = new List<Book>();
 
         public Customer (string name, string customerID)
@@ -33,6 +33,25 @@ namespace Library_C__Group_Project
             LoanedBooks.Remove(book);
         }
 
+        public void CheckLateReturns()
+        {
+            foreach (Book book in LoanedBooks)
+            {
+                int dayCount = 0;
+                DateTime? _loanDate = book.LoanDate;
+                DateTime? returnDate = _loanDate?.AddDays(30);
+                double overDueDays = returnDate.HasValue ? (DateTime.Now.Date - returnDate.Value.Date).TotalDays : 0;
+
+                while (true)
+                {
+                    if (overDueDays > 1)
+                    {
+                        LateFee += overDueDays * 10;
+                        break;
+                    }
+                }
+            }
+        }
 
         public void GetInfo()
         {
