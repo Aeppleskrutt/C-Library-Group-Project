@@ -16,6 +16,8 @@ namespace Library_C__Group_Project;
 /// </summary>
 public partial class MainWindow : Window
 {
+    private LibraryLogic library = new LibraryLogic();
+
     public MainWindow()
     {
 
@@ -26,17 +28,15 @@ public partial class MainWindow : Window
     {
         BookWindow bookWindow = new BookWindow(library);
         bookWindow.Show();
-
     }
 
     private void CustomerButton_Click(object sender, RoutedEventArgs e)
     {
-        CustomerWindow customerWindow = new CustomerWindow();
+        CustomerWindow customerWindow = new CustomerWindow(library);
         customerWindow.Show();
     }
 
     private void ReportButton_Click(object sender, RoutedEventArgs e)
     {
-
     }
 }

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using static System.Reflection.Metadata.BlobBuilder;
 
 
 
@@ -28,8 +29,8 @@ namespace Library_C__Group_Project
         }
         private void RefreshBookList()
         {
-            BooksListBox.Items.Clear(); //Clears the dispaly box for books
-            List<Book>books = library.GetBooks(); //Gets the list of books from the library logic
+            BooksListBox.Items.Clear(); //Clears the display box for books
+            List<Book> books = library.GetBooks(); //Gets the list of books from the library logic
             foreach (Book book in books)
             {
                 BooksListBox.Items.Add(book);
@@ -43,17 +44,24 @@ namespace Library_C__Group_Project
 
             if (string.IsNullOrWhiteSpace(title) || string.IsNullOrWhiteSpace(author) || string.IsNullOrWhiteSpace(isbn)) //checks so no fields are null/empty
             {
-                MessageBox.Show
-                    (
+                MessageBox.Show(
                 "All fields must be filled.", 
                 "Input Error", 
                 MessageBoxButton.OK,
                 MessageBoxImage.Error);
-                //Add another message box for if the ISBN isnt unique.
+                return;
+            }
+            bool bookExists = library.Books.Any(b => b.ISBN == isbn); // To make sure the ISBN is unique
+            if (bookExists)
+            {
+                MessageBox.Show(
+                    "A book with this ISBN already exists.",
+                    "Input Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
                 return;
             }
 
-            
             library.AddBook(title, author, isbn); //Calls method to add book
             RefreshBookList();
 
@@ -76,8 +84,6 @@ namespace Library_C__Group_Project
             Book selectedBook = (Book)BooksListBox.SelectedItem;
             library.RemoveBook(selectedBook.ISBN); //Removes said book from the library.
             RefreshBookList();
-
-
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
