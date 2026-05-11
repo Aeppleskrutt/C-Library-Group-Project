@@ -42,13 +42,9 @@ namespace Library_C__Group_Project
                 DateTime? returnDate = _loanDate?.AddDays(30);
                 double overDueDays = returnDate.HasValue ? (DateTime.Now.Date - returnDate.Value.Date).TotalDays : 0;
 
-                while (true)
+                if (overDueDays >= 1)
                 {
-                    if (overDueDays > 1)
-                    {
-                        LateFee += overDueDays * 10;
-                        break;
-                    }
+                    LateFee += overDueDays * 10;
                 }
             }
         }

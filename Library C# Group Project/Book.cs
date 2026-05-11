@@ -14,7 +14,7 @@ namespace Library_C__Group_Project
         public bool Status { get; set; } // true for available, false for checked out
         public DateTime? LoanDate { get; set; } // Used to calculate due date and overdue fees
         public Queue<Customer> ReservationQueue { get; set; }
-        = new Queue<Customer>(); //Too keep a queue of customers who reserved a specific book.
+        = new Queue<Customer>(); //To keep a queue of customers who reserved a specific book.
 
 
         public Book(string title, string author, string isbn)

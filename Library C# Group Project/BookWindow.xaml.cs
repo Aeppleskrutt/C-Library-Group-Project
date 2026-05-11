@@ -29,7 +29,7 @@ namespace Library_C__Group_Project
         }
         private void RefreshBookList()
         {
-            BooksListBox.Items.Clear(); //Clears the dispaly box for books
+            BooksListBox.Items.Clear(); //Clears the display box for books
             List<Book>books = library.GetBooks(); //Gets the list of books from the library logic
             foreach (Book book in books)
             {
