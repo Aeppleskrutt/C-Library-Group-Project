@@ -12,12 +12,9 @@ namespace Library_C__Group_Project
         public List<Customer> Customers { get; set; } = new List<Customer>();
 
 
-        public void GetBooks()
+        public List<Book> GetBooks()
         {
-            foreach (Book book in Books)
-            {
-                Console.WriteLine($"Title: {book.Title}, Author: {book.Author}, ISBN: {book.ISBN}, Status: {(book.Status ? "Available" : "Checked Out")}");
-            }
+            return Books;
         }
         public void AddBook(string title, string author, string isbn)
         {

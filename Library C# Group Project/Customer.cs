@@ -38,7 +38,6 @@ namespace Library_C__Group_Project
             LateFee = 0;
             foreach (Book book in LoanedBooks)
             {
-                int dayCount = 0;
                 DateTime? _loanDate = book.LoanDate;
                 DateTime? returnDate = _loanDate?.AddDays(30);
                 double overDueDays = returnDate.HasValue ? (DateTime.Now.Date - returnDate.Value.Date).TotalDays : 0;

@@ -36,7 +36,7 @@ namespace Library_C__Group_Project
         {
             Status = status;
         }
-        public override string ToString() //??
+        public override string ToString() //ToString method to let bookinformation be properly changed in UI
         {
             string statusText = Status ? "Available" : "Checked Out";
             return $"{Title} by {Author} | ISBN: {ISBN} | Status: {statusText}";
