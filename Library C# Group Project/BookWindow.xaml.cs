@@ -17,25 +17,25 @@ using static System.Reflection.Metadata.BlobBuilder;
 
 namespace Library_C__Group_Project
 {
+
     public partial class BookWindow : Window
     {
-        private List<Book> books = new List<Book>(); //Used for testing the program
-        public BookWindow()
+        private LibraryLogic library;
+        public BookWindow(LibraryLogic libraryLogic)
         {
             InitializeComponent();
+            library = libraryLogic;
+            RefreshBookList(); //Refreshes book list on launch, this is to ensure starting a window after closing will still show all books
         }
-<<<<<<< Updated upstream
-
-=======
         private void RefreshBookList()
         {
-            BooksListBox.Items.Clear(); //Clears the display box for books
-            foreach (Book book in library.Books)
+            BooksListBox.Items.Clear(); //Clears the dispaly box for books
+            List<Book>books = library.GetBooks(); //Gets the list of books from the library logic
+            foreach (Book book in books)
             {
-                BooksListBox.Items.Add(book); //Reads and adds each book back to the display
+                BooksListBox.Items.Add(book);
             }
         }
->>>>>>> Stashed changes
         private void AddBookButton_Click(object sender, RoutedEventArgs e)
         {
             string title = TitleTextBox.Text;
@@ -62,16 +62,10 @@ namespace Library_C__Group_Project
                 return;
             }
 
-<<<<<<< Updated upstream
-            Book newBook = new Book(title, author, isbn);
-            books.Add(newBook); //Used for testing the program
-            BooksListBox.Items.Add(newBook.GetDetails());
-=======
             library.AddBook(title, author, isbn); //Calls method to add book
             RefreshBookList();
->>>>>>> Stashed changes
 
-            TitleTextBox.Clear();
+            TitleTextBox.Clear(); //Clears text boxes to avoid confusion for user
             AuthorTextBox.Clear();
             ISBNTextBox.Clear();
         }
@@ -87,26 +81,9 @@ namespace Library_C__Group_Project
                     MessageBoxImage.Warning);
                 return;
             }
-<<<<<<< Updated upstream
-           
-            int selectedIndex = BooksListBox.SelectedIndex; //Which book in the GUI list is selected
-            books.RemoveAt(selectedIndex); //Removes said book from the GUI.
-            BooksListBox.Items.RemoveAt(selectedIndex); //Removes said book from the list.
-
-=======
-
-            MessageBoxResult result = MessageBox.Show( //Shows a message box to confirm the user wants to remove the book
-            "Are you sure you want to remove this book?",
-            "Confirm Removal",
-            MessageBoxButton.YesNo,
-            MessageBoxImage.Question);
-
-            if (result == MessageBoxResult.Yes)
-            {
-                Book selectedBook = (Book)BooksListBox.SelectedItem;
-                library.RemoveBook(selectedBook.ISBN); //Removes said book from the library.
-                RefreshBookList();
-            }
+            Book selectedBook = (Book)BooksListBox.SelectedItem;
+            library.RemoveBook(selectedBook.ISBN); //Removes said book from the library.
+            RefreshBookList();
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
@@ -122,7 +99,6 @@ namespace Library_C__Group_Project
         private void ShowAllButton_Click(object sender, RoutedEventArgs e)
         {
             RefreshBookList();
->>>>>>> Stashed changes
         }
     }
 }

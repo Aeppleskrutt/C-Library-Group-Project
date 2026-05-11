@@ -16,24 +16,18 @@ namespace Library_C__Group_Project;
 /// </summary>
 public partial class MainWindow : Window
 {
+    private LibraryLogic library = new LibraryLogic();
+
     public MainWindow()
     {
         InitializeComponent();
     }
 
-<<<<<<< Updated upstream
-=======
-    private LibraryLogic library = new LibraryLogic();
->>>>>>> Stashed changes
     private void BookButton_Click(object sender, RoutedEventArgs e)
     {
-        BookWindow bookWindow = new BookWindow();
+        BookWindow bookWindow = new BookWindow(library);
         bookWindow.Show();
     }
-<<<<<<< Updated upstream
-   
-    
-=======
 
     private void CustomerButton_Click(object sender, RoutedEventArgs e)
     {
@@ -43,7 +37,5 @@ public partial class MainWindow : Window
 
     private void ReportButton_Click(object sender, RoutedEventArgs e)
     {
-
     }
->>>>>>> Stashed changes
 }

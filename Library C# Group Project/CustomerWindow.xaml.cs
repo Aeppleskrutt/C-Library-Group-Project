@@ -14,20 +14,19 @@ using System.Windows.Shapes;
 
 namespace Library_C__Group_Project
 {
-    
     public partial class CustomerWindow : Window
     {
         private LibraryLogic library;
+
         public CustomerWindow(LibraryLogic librarylogic)
         {
             InitializeComponent();
             library = librarylogic;
 
             RefreshCustomerList();
-            RefreshAvailableBooks(); 
+            RefreshAvailableBooks();
             //The refreshes run to make sure that added books and customers are shown correctly
         }
-
 
         private void RefreshCustomerList() //To ensure correct information is always dispalyed
         {
@@ -37,6 +36,7 @@ namespace Library_C__Group_Project
                 CustomersListBox.Items.Add(customer); //Reads and adds each customer back to the display
             }
         }
+
         private void RefreshAvailableBooks() //To make available books display correctly
         {
             AvailableBooksComboBox.Items.Clear();
@@ -48,6 +48,7 @@ namespace Library_C__Group_Project
                 }
             }
         }
+
         private void RefreshLoanedBooks(Customer customer) //To make loaned books display correctly
         {
             LoanedBooksListBox.Items.Clear();
@@ -56,7 +57,6 @@ namespace Library_C__Group_Project
                 LoanedBooksListBox.Items.Add(book);
             }
         }
-
 
         private void AddCustomerButton_Click(object sender, RoutedEventArgs e)
         {
@@ -70,18 +70,18 @@ namespace Library_C__Group_Project
                     "Input Error",
                     MessageBoxButton.OK,
                     MessageBoxImage.Error);
-                
+
                 return;
             }
 
             bool customerExists = library.Customers.Any(c => c.CustomerID == customerID); // To make sure the customer ID is unique
-            if (customerExists) 
+            if (customerExists)
             {
                 MessageBox.Show(
-                        "A customer with this ID already exists.",
-                        "Input Error",
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Error);
+                    "A customer with this ID already exists.",
+                    "Input Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
                 return;
             }
 
@@ -105,10 +105,10 @@ namespace Library_C__Group_Project
             }
 
             MessageBoxResult result = MessageBox.Show( //Shows a message box to confirm the user wants to remove the customer
-            "Are you sure you want to remove this customer?",
-            "Confirm Removal",
-            MessageBoxButton.YesNo,
-            MessageBoxImage.Question);
+                "Are you sure you want to remove this customer?",
+                "Confirm Removal",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question);
 
             if (result == MessageBoxResult.Yes)
             {
@@ -118,8 +118,7 @@ namespace Library_C__Group_Project
             }
         }
 
-
-        private void CustomersListBox_SelectionChanged(object sender,SelectionChangedEventArgs e)
+        private void CustomersListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (CustomersListBox.SelectedItem != null)
             {
@@ -133,30 +132,30 @@ namespace Library_C__Group_Project
             if (CustomersListBox.SelectedItem == null)
             {
                 MessageBox.Show(
-                   "Please select a customer.",
-                   "Selection Error",
-                   MessageBoxButton.OK,
-                   MessageBoxImage.Warning);
-                return;
-            }
-            if (AvailableBooksComboBox.SelectedItem == null)
-            {
-                MessageBox.Show(
-                   "Please select an available book.",
-                   "Selection Error",
-                   MessageBoxButton.OK,
-                   MessageBoxImage.Warning);
+                    "Please select a customer.",
+                    "Selection Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
                 return;
             }
 
-            Customer selectedCustomer =(Customer)CustomersListBox.SelectedItem;
-            Book selectedBook =(Book)AvailableBooksComboBox.SelectedItem;
+            if (AvailableBooksComboBox.SelectedItem == null)
+            {
+                MessageBox.Show(
+                    "Please select an available book.",
+                    "Selection Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+                return;
+            }
+
+            Customer selectedCustomer = (Customer)CustomersListBox.SelectedItem;
+            Book selectedBook = (Book)AvailableBooksComboBox.SelectedItem;
             library.LoanBook(selectedBook.ISBN, selectedCustomer.CustomerID);
 
             RefreshLoanedBooks(selectedCustomer);
             RefreshAvailableBooks();
             //Refreshes the lists to make sure loaned/available books display correctly
-
         }
 
         private void ReturnBookButton_Click(object sender, RoutedEventArgs e)
@@ -164,19 +163,20 @@ namespace Library_C__Group_Project
             if (CustomersListBox.SelectedItem == null)
             {
                 MessageBox.Show(
-                   "Please select a customer.",
-                   "Selection Error",
-                   MessageBoxButton.OK,
-                   MessageBoxImage.Warning);
+                    "Please select a customer.",
+                    "Selection Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
                 return;
             }
+
             if (AvailableBooksComboBox.SelectedItem == null)
             {
                 MessageBox.Show(
-                   "Please select a loaned book.",
-                   "Selection Error",
-                   MessageBoxButton.OK,
-                   MessageBoxImage.Warning);
+                    "Please select a loaned book.",
+                    "Selection Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
                 return;
             }
 
