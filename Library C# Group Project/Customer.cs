@@ -35,6 +35,7 @@ namespace Library_C__Group_Project
 
         public void CheckLateReturns()
         {
+            LateFee = 0;
             foreach (Book book in LoanedBooks)
             {
                 int dayCount = 0;
