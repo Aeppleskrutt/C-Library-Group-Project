@@ -23,7 +23,6 @@ public partial class MainWindow : Window
 
         InitializeComponent();
     }
-    private LibraryLogic library = new LibraryLogic();
     private void BookButton_Click(object sender, RoutedEventArgs e)
     {
         BookWindow bookWindow = new BookWindow(library);

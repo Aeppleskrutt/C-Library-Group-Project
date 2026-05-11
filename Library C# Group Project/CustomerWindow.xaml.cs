@@ -188,5 +188,10 @@ namespace Library_C__Group_Project
             RefreshAvailableBooks();
             //Refreshes the lists to make sure loaned/available books display correctly
         }
+
+        private void AvailableBooksComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

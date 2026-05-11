@@ -83,17 +83,16 @@ namespace Library_C__Group_Project
             }
             Book selectedBook = (Book)BooksListBox.SelectedItem;
             library.RemoveBook(selectedBook.ISBN); //Removes said book from the library.
-            RefreshBookList();
+            BooksListBox.Items.Remove(selectedBook); //Removes the book from the display as well
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
         {
-            string searchText = SearchTextBox.Text;
             BooksListBox.Items.Clear();
-
-            //Need a method, likely in Librarylogic that searches the list.
-            //Will update whenever said method is created
-
+            string searchText = SearchTextBox.Text;
+            //Searches for books with the search text in either the title or author and adds them to the display
+            library.GetBooks().Where(b => b.Title.Contains(searchText, StringComparison.OrdinalIgnoreCase) || b.Author.Contains(searchText, 
+            StringComparison.OrdinalIgnoreCase)).ToList().ForEach(b => BooksListBox.Items.Add(b));
         }
 
         private void ShowAllButton_Click(object sender, RoutedEventArgs e)
