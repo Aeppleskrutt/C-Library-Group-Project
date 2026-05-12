@@ -20,7 +20,10 @@ public partial class MainWindow : Window
 
     public MainWindow()
     {
-
+        foreach(Customer customer in library.Customers)
+        {
+            customer.CheckLateReturns();
+        }
         InitializeComponent();
     }
     private void BookButton_Click(object sender, RoutedEventArgs e)
