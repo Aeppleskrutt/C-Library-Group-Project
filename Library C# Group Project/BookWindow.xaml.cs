@@ -81,9 +81,19 @@ namespace Library_C__Group_Project
                     MessageBoxImage.Warning);
                 return;
             }
-            Book selectedBook = (Book)BooksListBox.SelectedItem;
-            library.RemoveBook(selectedBook.ISBN); //Removes said book from the library.
-            BooksListBox.Items.Remove(selectedBook); //Removes the book from the display as well
+            MessageBoxResult result = MessageBox.Show( //Shows a message box to confirm the user wants to remove the book
+                "Are you sure you want to remove this book?",
+                "Confirm Removal",
+                 MessageBoxButton.YesNo,
+                 MessageBoxImage.Question);
+
+            if (result == MessageBoxResult.Yes)
+            {
+                Book selectedBook = (Book)BooksListBox.SelectedItem;
+                library.RemoveBook(selectedBook.ISBN); //Removes said book from the library.
+                BooksListBox.Items.Remove(selectedBook); //Removes the book from the display as well
+            }
+            
         }
 
         private void SearchButton_Click(object sender, RoutedEventArgs e)
