@@ -57,5 +57,13 @@ namespace Library_C__Group_Project
             return checkThisString;
         }
 
+        public void ProcessISBN(string ISBN)
+        {
+            if(ISBN.Length != 13)
+            {
+                Console.WriteLine("Needs to be 13 characters!");
+            }
+        }
+
     }
 }
