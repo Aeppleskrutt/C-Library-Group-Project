@@ -11,7 +11,6 @@ namespace Library_C__Group_Project
     {
         public string Name { get; set; }
         public string CustomerID { get; set; }
-        public double LateFeeDouble { get; set; }
         public string CustomerFee {  get; set; }
 
         public List<Book> LoanedBooks { get; set; } = new List<Book>();
@@ -20,13 +19,13 @@ namespace Library_C__Group_Project
         {
             Name = name;
             CustomerID = customerID;
-            CustomerFee = "5";
+            CustomerFee = "0";
         }
 
         public void AddLoan(Book book)
         {
-            book.LoanDate = new DateTime(2026, 4, 1);
-            //book.LoanDate = DateTime.Now;
+            //book.LoanDate = new DateTime(2026, 4, 1);
+            book.LoanDate = DateTime.Now;
             LoanedBooks.Add(book);
         }
 
@@ -38,7 +37,7 @@ namespace Library_C__Group_Project
 
         public void CheckLateReturns()
         {
-            LateFeeDouble = 0;
+            double LateFeeDouble = 0;
             foreach (Book book in LoanedBooks)
             {
                 DateTime? _loanDate = book.LoanDate;
