@@ -155,6 +155,11 @@ namespace Library_C__Group_Project
 
             RefreshLoanedBooks(selectedCustomer);
             RefreshAvailableBooks();
+            /*foreach (Customer customer in library.Customers)
+            {
+                customer.CheckLateReturns(); //Checks for late returns to make sure fees are up to date
+            }
+            RefreshCustomerList(); //FOR TESTING PURPOSES ONLY, CAN BE REMOVED*/
             //Refreshes the lists to make sure loaned/available books display correctly
         }
 
