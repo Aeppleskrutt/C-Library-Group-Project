@@ -170,7 +170,7 @@ namespace Library_C__Group_Project
                 return;
             }
 
-            if (AvailableBooksComboBox.SelectedItem == null)
+            if (LoanedBooksListBox.SelectedItem == null)
             {
                 MessageBox.Show(
                     "Please select a loaned book.",
@@ -181,7 +181,7 @@ namespace Library_C__Group_Project
             }
 
             Customer selectedCustomer = (Customer)CustomersListBox.SelectedItem;
-            Book selectedBook = (Book)AvailableBooksComboBox.SelectedItem;
+            Book selectedBook = (Book)LoanedBooksListBox.SelectedItem;
             library.ReturnBook(selectedBook.ISBN, selectedCustomer.CustomerID);
 
             RefreshLoanedBooks(selectedCustomer);
