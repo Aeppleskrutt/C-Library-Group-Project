@@ -11,19 +11,22 @@ namespace Library_C__Group_Project
     {
         public string Name { get; set; }
         public string CustomerID { get; set; }
-        public double LateFee { get; set; }
+        public double LateFeeDouble { get; set; }
+        public string CustomerFee {  get; set; }
+
         public List<Book> LoanedBooks { get; set; } = new List<Book>();
 
         public Customer (string name, string customerID)
         {
             Name = name;
             CustomerID = customerID;
-            LateFee = 0;
+            CustomerFee = "5";
         }
 
         public void AddLoan(Book book)
         {
-            book.LoanDate = DateTime.Now;
+            book.LoanDate = new DateTime(2026, 4, 1);
+            //book.LoanDate = DateTime.Now;
             LoanedBooks.Add(book);
         }
 
@@ -35,7 +38,7 @@ namespace Library_C__Group_Project
 
         public void CheckLateReturns()
         {
-            LateFee = 0;
+            LateFeeDouble = 0;
             foreach (Book book in LoanedBooks)
             {
                 DateTime? _loanDate = book.LoanDate;
@@ -44,9 +47,13 @@ namespace Library_C__Group_Project
 
                 if (overDueDays > 0)
                 {
-                    LateFee += overDueDays * 10;
+                    LateFeeDouble += overDueDays * 10;
                 }
             }
+
+            int LateFeeInt = (int)LateFeeDouble;
+
+            CustomerFee = LateFeeInt.ToString("0");
         }
 
         public void GetInfo()
@@ -58,7 +65,7 @@ namespace Library_C__Group_Project
         }
         public override string ToString() //To let customer information be shown properaly in GUI
         {
-            return $"{Name} | ID: {CustomerID}";
+            return $"{Name} | ID: {CustomerID} | Fee: {CustomerFee}";
         }
     }
 }
