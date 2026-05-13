@@ -16,6 +16,16 @@ namespace Library_C__Group_Project
         {
             return Books;
         }
+
+        public void Testing()
+        {
+            AddBook("Harry Potter", "Rowling", "0001");
+            AddBook("Star Wars", "Lucas", "0002");
+            AddBook("The Hobbit", "Tolkien", "0003");
+            Customers.Add(new Customer("Johan", "001"));
+            Customers.Add(new Customer("Lars", "002"));
+            Customers.Add(new Customer("Lisa", "003"));
+        }
         public void AddBook(string title, string author, string isbn)
         {
             Books.Add(new Book(title, author, isbn));
