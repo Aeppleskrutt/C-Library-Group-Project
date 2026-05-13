@@ -62,6 +62,16 @@ namespace Library_C__Group_Project
                 return;
             }
 
+            if (isbn.Length != 13)
+            {
+                MessageBox.Show(
+                    "ISBN must be exactly 13 characters long.",
+                    "Input Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+                return;
+            }
+
             library.AddBook(title, author, isbn); //Calls method to add book
             RefreshBookList();
 
