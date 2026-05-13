@@ -50,9 +50,7 @@ namespace Library_C__Group_Project
                 }
             }
 
-            int LateFeeInt = (int)LateFeeDouble;
-
-            CustomerFee = LateFeeInt.ToString("0");
+            CustomerFee = LateFeeDouble.ToString("0");
         }
 
         public void GetInfo()
