@@ -9,6 +9,15 @@ namespace Library_C__Group_Project
 {
     public class ErrorHandler
     {
+        public void CheckEmptyField()
+        {
+            MessageBox.Show(
+                "All fields must be filled.",
+                "Input Error",
+                MessageBoxButton.OK,
+                MessageBoxImage.Error);
+        }
+
         public bool CheckIfCustomerExists(List<Customer> customers, string customerID)
         {
             bool customerExists = false;
@@ -37,15 +46,6 @@ namespace Library_C__Group_Project
             }
 
             return bookExists;
-        }
-
-        public void CheckEmptyField()
-        {
-            MessageBox.Show(
-                "All fields must be filled.",
-                "Input Error",
-                MessageBoxButton.OK,
-                MessageBoxImage.Error);
         }
 
         public string ProcessString()
