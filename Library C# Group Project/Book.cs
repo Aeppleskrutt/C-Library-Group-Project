@@ -32,7 +32,7 @@ namespace Library_C__Group_Project
             return $"{Title} by {Author} | ISBN: {ISBN} | Status: {statusText}";
         }
 
-        public void setStatus(bool status) // Changes a books status to inputed status
+        public void SetStatus(bool status) // Changes a books status to inputed status
         {
             Status = status;
         }

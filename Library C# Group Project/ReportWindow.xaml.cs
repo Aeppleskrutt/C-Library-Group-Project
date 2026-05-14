@@ -36,5 +36,10 @@ namespace Library_C__Group_Project
                 CustomerName = r.Holder.Name
             }).ToList();
         }
+
+        private void RefreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            LoadReport();
+        }
     }
 }
