@@ -41,5 +41,7 @@ public partial class MainWindow : Window
 
     private void ReportButton_Click(object sender, RoutedEventArgs e)
     {
+        ReportWindow reportWindow = new ReportWindow(library);
+        reportWindow.Show();
     }
 }
