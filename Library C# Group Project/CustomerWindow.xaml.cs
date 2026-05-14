@@ -65,12 +65,7 @@ namespace Library_C__Group_Project
 
             if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(customerID))
             {
-                MessageBox.Show(
-                    "All fields must be filled.",
-                    "Input Error",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Error);
-
+                library.ErrorHandler.CheckEmptyField();
                 return;
             }
 

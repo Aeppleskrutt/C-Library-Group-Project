@@ -44,11 +44,7 @@ namespace Library_C__Group_Project
 
             if (string.IsNullOrWhiteSpace(title) || string.IsNullOrWhiteSpace(author) || string.IsNullOrWhiteSpace(isbn)) //checks so no fields are null/empty
             {
-                MessageBox.Show(
-                "All fields must be filled.", 
-                "Input Error", 
-                MessageBoxButton.OK,
-                MessageBoxImage.Error);
+                library.ErrorHandler.CheckEmptyField();
                 return;
             }
             bool bookExists = library.Books.Any(b => b.ISBN == isbn); // To make sure the ISBN is unique

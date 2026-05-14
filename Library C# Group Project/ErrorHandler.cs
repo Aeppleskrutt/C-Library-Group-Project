@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Library_C__Group_Project
 {
-    class ErrorHandler
+    public class ErrorHandler
     {
         public bool CheckIfCustomerExists(List<Customer> customers, string customerID)
         {
@@ -36,6 +37,15 @@ namespace Library_C__Group_Project
             }
 
             return bookExists;
+        }
+
+        public void CheckEmptyField()
+        {
+            MessageBox.Show(
+                "All fields must be filled.",
+                "Input Error",
+                MessageBoxButton.OK,
+                MessageBoxImage.Error);
         }
 
         public string ProcessString()

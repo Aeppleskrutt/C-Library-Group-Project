@@ -10,6 +10,7 @@ namespace Library_C__Group_Project
     {
         public List<Book> Books { get; set; } = new List<Book>();
         public List<Customer> Customers { get; set; } = new List<Customer>();
+        public ErrorHandler ErrorHandler { get; set; } = new ErrorHandler();
 
 
         public List<Book> GetBooks()
