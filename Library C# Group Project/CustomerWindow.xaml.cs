@@ -65,18 +65,14 @@ namespace Library_C__Group_Project
 
             if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(customerID))
             {
-                library.ErrorHandler.CheckEmptyField();
+                library.ErrorHandler.EmptyFieldError();
                 return;
             }
 
             bool customerExists = library.Customers.Any(c => c.CustomerID == customerID); // To make sure the customer ID is unique
             if (customerExists)
             {
-                MessageBox.Show(
-                    "A customer with this ID already exists.",
-                    "Input Error",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Error);
+                library.ErrorHandler.CustomerExistError();
                 return;
             }
 
@@ -91,11 +87,7 @@ namespace Library_C__Group_Project
         {
             if (CustomersListBox.SelectedIndex == -1) //If no customer is selected.
             {
-                MessageBox.Show(
-                    "Please select a customer to remove.",
-                    "Selection Error",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Warning);
+                library.ErrorHandler.SelectCustomerError();
                 return;
             }
 
@@ -126,21 +118,13 @@ namespace Library_C__Group_Project
         {
             if (CustomersListBox.SelectedItem == null)
             {
-                MessageBox.Show(
-                    "Please select a customer.",
-                    "Selection Error",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Warning);
+                library.ErrorHandler.SelectCustomerError();
                 return;
             }
 
             if (AvailableBooksComboBox.SelectedItem == null)
             {
-                MessageBox.Show(
-                    "Please select an available book.",
-                    "Selection Error",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Warning);
+                library.ErrorHandler.SelectAvailableBookError();
                 return;
             }
 
@@ -162,21 +146,13 @@ namespace Library_C__Group_Project
         {
             if (CustomersListBox.SelectedItem == null)
             {
-                MessageBox.Show(
-                    "Please select a customer.",
-                    "Selection Error",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Warning);
+                library.ErrorHandler.SelectCustomerError();
                 return;
             }
 
             if (LoanedBooksListBox.SelectedItem == null)
             {
-                MessageBox.Show(
-                    "Please select a loaned book.",
-                    "Selection Error",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Warning);
+                library.ErrorHandler.SelectLoandBookError();
                 return;
             }
 

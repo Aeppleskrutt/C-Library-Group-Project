@@ -9,7 +9,7 @@ namespace Library_C__Group_Project
 {
     public class ErrorHandler
     {
-        public void CheckEmptyField()
+        public void EmptyFieldError()
         {
             MessageBox.Show(
                 "All fields must be filled.",
@@ -18,7 +18,70 @@ namespace Library_C__Group_Project
                 MessageBoxImage.Error);
         }
 
-        public bool CheckIfCustomerExists(List<Customer> customers, string customerID)
+        public void BookExistError()
+        {
+            MessageBox.Show(
+                    "A book with this ISBN already exists.",
+                    "Input Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+        }
+
+        public void RemoveBookError()
+        {
+            MessageBox.Show(
+                    "Please select a book to remove.",
+                    "Selection Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+        }
+
+        public void SelectLoandBookError()
+        {
+            MessageBox.Show(
+                    "Please select a loaned book.",
+                    "Selection Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+        }
+
+        public void SelectAvailableBookError()
+        {
+            MessageBox.Show(
+                    "Please select an available book.",
+                    "Selection Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+        }
+
+        public void ISBNError()
+        {
+            MessageBox.Show(
+                    "ISBN must be exactly 13 characters long.",
+                    "Input Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+        }
+
+        public void CustomerExistError()
+        {
+            MessageBox.Show(
+                    "A customer with this ID already exists.",
+                    "Input Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+        }
+
+        public void SelectCustomerError()
+        {
+            MessageBox.Show(
+                    "Please select a customer.",
+                    "Selection Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+        }
+
+        /*public bool CheckIfCustomerExists(List<Customer> customers, string customerID)
         {
             bool customerExists = false;
             foreach (Customer customer in customers)
@@ -31,9 +94,9 @@ namespace Library_C__Group_Project
             }
 
             return customerExists;
-        }   
+        }  */
 
-        public bool CheckIfBookExists(List<Book> books, string title)
+        /*public bool CheckIfBookExists(List<Book> books, string title)
         {
             bool bookExists = false;
             foreach (Book book in books)
@@ -46,7 +109,7 @@ namespace Library_C__Group_Project
             }
 
             return bookExists;
-        }
+        }*/
 
         public string ProcessString()
         {
