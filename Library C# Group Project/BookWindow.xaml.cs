@@ -44,31 +44,19 @@ namespace Library_C__Group_Project
 
             if (string.IsNullOrWhiteSpace(title) || string.IsNullOrWhiteSpace(author) || string.IsNullOrWhiteSpace(isbn)) //checks so no fields are null/empty
             {
-                MessageBox.Show(
-                "All fields must be filled.", 
-                "Input Error", 
-                MessageBoxButton.OK,
-                MessageBoxImage.Error);
+                library.ErrorHandler.EmptyFieldError();
                 return;
             }
             bool bookExists = library.Books.Any(b => b.ISBN == isbn); // To make sure the ISBN is unique
             if (bookExists)
             {
-                MessageBox.Show(
-                    "A book with this ISBN already exists.",
-                    "Input Error",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Error);
+                library.ErrorHandler.BookExistError();
                 return;
             }
 
             if (isbn.Length != 13)
             {
-                MessageBox.Show(
-                    "ISBN must be exactly 13 characters long.",
-                    "Input Error",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Error);
+                library.ErrorHandler.ISBNError();
                 return;
             }
 
@@ -84,11 +72,7 @@ namespace Library_C__Group_Project
         {
             if (BooksListBox.SelectedIndex == -1) //If no book is selected.
             {
-                MessageBox.Show(
-                    "Please select a book to remove.",
-                    "Selection Error",
-                    MessageBoxButton.OK,
-                    MessageBoxImage.Warning);
+                library.ErrorHandler.RemoveBookError();
                 return;
             }
             MessageBoxResult result = MessageBox.Show( //Shows a message box to confirm the user wants to remove the book
