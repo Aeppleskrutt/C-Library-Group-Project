@@ -38,8 +38,11 @@ namespace Library_C__Group_Project
         }
         public override string ToString() //ToString method to let book information be properly shown in the UI
         {
-            string statusText = Status ? "Available" : "Checked Out";
-            return $"{Title} by {Author} | ISBN: {ISBN} | Status: {statusText}";
+            if (Status) 
+            {
+                return $"{Title} by {Author} | ISBN: {ISBN} | Status: Available";
+            }
+            return $"{Title} by {Author} | ISBN: {ISBN} | Status: Checked Out | Queue: {ReservationQueue.Count}";
         }
 
     }

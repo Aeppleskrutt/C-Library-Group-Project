@@ -5,10 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Library_C__Group_Project"
         mc:Ignorable="d"
-        Title="CustomerWindow" Height="500" Width="800">
+        Title="CustomerWindow" Height="600" Width="800">
     <Grid Margin="10">
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
@@ -44,46 +45,59 @@
                    Margin="0,0,0,5"/>
 
             <ListBox Name="CustomersListBox"
-                 Height="150"
+                 Height="95"
                  SelectionChanged="CustomersListBox_SelectionChanged"/>
         </StackPanel>
-        
-        <Grid Grid.Row="3">
+        <StackPanel Grid.Row="3">
+            <TextBlock Text="Loaned Books"
+            FontWeight="Bold"
+            Margin="0,0,0,5"/>
+            <ListBox Name="LoanedBooksListBox"
+            Height="95"/>
+        </StackPanel>
+
+        <Grid Grid.Row="4">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <StackPanel>
-
-                <TextBlock Text="Loaned Books"
-                   FontWeight="Bold"
-                   Margin="0,0,0,5"/>
-
-                <ListBox Name="LoanedBooksListBox"
-                 Height="125"
-                 />
-            </StackPanel>
-            
-            <StackPanel Grid.Column="1" Margin="10,0,10,0">
-            <TextBlock Text="Available Books"
-                   FontWeight="Bold"
-                   Margin="0,0,0,5"/>
+                <TextBlock Text="Available Books"
+                 FontWeight="Bold"
+                Margin="0,0,0,0"/>
 
                 <ComboBox Name="AvailableBooksComboBox"
-                  Height="35"
-                  Margin="0,0,0,10" SelectionChanged="AvailableBooksComboBox_SelectionChanged"/>
+                Height="35"
+                Margin="0,0,0,5"/>
 
+
+                <TextBlock Text="Loaned Books"
+                FontWeight="Bold"
+                Margin="0,0,0,0"/>
+
+                <ComboBox Name="ReservedBooksComboBox"
+                Height="35"
+                Margin="0,0,0,5"/>
+
+            </StackPanel>
+
+            <StackPanel Grid.Column="1" Margin="10,0,10,0">
                 <Button Name="LoanBookButton"
                 Content="Loan Selected Book"
                 Height="35"
-                Margin="0,0,0,10"
+                Margin="0,15,0,10"
                 Click="LoanBookButton_Click"/>
 
                 <Button Name="ReturnBookButton"
                 Content="Return Selected Book"
                 Height="35"
+                Margin="0,0,0,10"
                 Click="ReturnBookButton_Click"/>
 
+                <Button Name="ReserveBookButton"
+            Content="Reserve Selected Book"
+                Height="35"
+                Click="ReserveBookButton_Click"/>
             </StackPanel>
 
         </Grid>

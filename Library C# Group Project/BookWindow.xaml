@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Library_C__Group_Project"
         mc:Ignorable="d"
-        Title="BookWindow" Height="450" Width="800">
+        Title="BookWindow" Height="500" Width="800">
     <Grid>
         <Grid Margin="20">
 
@@ -34,19 +34,19 @@
             Name="AddBookButton"
             Content="Add Book"
             Height="30"
-            Margin="50,10,50,10" Click="AddBookButton_Click"/>
+            Margin="400,10,50,10" Click="AddBookButton_Click"/>
             
             
-            <Button Grid.Row="2"
+            <Button Grid.Row="1"
             Name="RemoveBookButton"
             Content="Remove Selected Book"
             Height="30"
-            Margin="50,0,50,10"
+            Margin="50,10,400,10"
             Click="RemoveBookButton_Click"/>
-            
-            <StackPanel Grid.Row="3"
-            Orientation="Horizontal"
-            Margin="0,10,0,10">
+
+            <StackPanel Grid.Row="2">
+                <StackPanel   Orientation="Horizontal"
+            Margin="0,0,0,10">
 
                 <TextBox Name="SearchTextBox"
              Width="200"
@@ -63,10 +63,21 @@
             Width="70"
             Margin="10,0,0,0"
             Click="ShowAllButton_Click"/>
-
+            
             </StackPanel>
-            <ListBox Grid.Row="4"
-             Name="BooksListBox"/>
+            <ListBox
+            Name="BooksListBox"
+            Height="125" SelectionChanged="BooksListBox_SelectionChanged"/>
+            </StackPanel>
+            <StackPanel Grid.Row="4">
+                <TextBlock Text="Reservation Queue"
+        FontWeight="Bold"
+            Margin="0,0,0,0"/>
+                <ListBox Name="ReservationQueueListBox"
+                Height="80"/>
+                
+            </StackPanel>
+
 
         </Grid>
     </Grid>

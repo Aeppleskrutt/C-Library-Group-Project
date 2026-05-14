@@ -25,6 +25,7 @@ namespace Library_C__Group_Project
 
             RefreshCustomerList();
             RefreshAvailableBooks();
+            RefreshReservedBooks();
             //The refreshes run to make sure that added books and customers are shown correctly
         }
 
@@ -45,6 +46,18 @@ namespace Library_C__Group_Project
                 if (book.Status) //Makes sure only available books are added to the box
                 {
                     AvailableBooksComboBox.Items.Add(book);
+                }
+            }
+        }
+        private void RefreshReservedBooks()
+        {
+            ReservedBooksComboBox.Items.Clear();
+
+            foreach (Book book in library.Books)
+            {
+                if (!book.Status)
+                {
+                    ReservedBooksComboBox.Items.Add(book);
                 }
             }
         }
@@ -134,6 +147,7 @@ namespace Library_C__Group_Project
 
             RefreshLoanedBooks(selectedCustomer);
             RefreshAvailableBooks();
+            RefreshReservedBooks();
             /*foreach (Customer customer in library.Customers)
             {
                 customer.CheckLateReturns(); //Checks for late returns to make sure fees are up to date
@@ -162,12 +176,36 @@ namespace Library_C__Group_Project
 
             RefreshLoanedBooks(selectedCustomer);
             RefreshAvailableBooks();
+            RefreshReservedBooks();
             //Refreshes the lists to make sure loaned/available books display correctly
         }
 
-        private void AvailableBooksComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ReserveBookButton_Click(object sender, RoutedEventArgs e)
         {
+            if (CustomersListBox.SelectedItem == null)
+            {
+                library.ErrorHandler.SelectCustomerError();
+                return;
+            }
+            if (ReservedBooksComboBox.SelectedItem == null)
+            {
+                library.ErrorHandler.SelectReservedBookError();
+                return;
+            }
 
+            Customer selectedCustomer = (Customer)CustomersListBox.SelectedItem;
+            Book selectedBook = (Book)ReservedBooksComboBox.SelectedItem;
+            if (selectedBook.ReservationQueue.Contains(selectedCustomer) || selectedCustomer.LoanedBooks.Contains(selectedBook))
+            {
+                library.ErrorHandler.ReservedBookError();
+                return;
+            }
+            selectedBook.ReservationQueue.Enqueue(selectedCustomer);
+            MessageBox.Show($"{selectedCustomer.Name} reserved {selectedBook.Title}");
+
+            RefreshAvailableBooks();
+            RefreshReservedBooks();
+            //Refreshes the lists to make sure loaned/available books display correctly
         }
     }
 }

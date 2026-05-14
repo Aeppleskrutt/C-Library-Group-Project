@@ -36,6 +36,14 @@ namespace Library_C__Group_Project
                 BooksListBox.Items.Add(book);
             }
         }
+        private void RefreshReservationQueue(Book selectedBook)
+        {
+            ReservationQueueListBox.Items.Clear();
+            foreach (Customer customer in selectedBook.ReservationQueue)
+            {
+                ReservationQueueListBox.Items.Add(customer.Name);
+            }
+        }
         private void AddBookButton_Click(object sender, RoutedEventArgs e)
         {
             string title = TitleTextBox.Text;
@@ -104,6 +112,15 @@ namespace Library_C__Group_Project
         private void ShowAllButton_Click(object sender, RoutedEventArgs e)
         {
             RefreshBookList();
+        }
+
+        private void BooksListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (BooksListBox.SelectedItem != null)
+            {
+                Book selectedBook = (Book)BooksListBox.SelectedItem;
+                RefreshReservationQueue(selectedBook);
+            }
         }
     }
 }

@@ -81,6 +81,24 @@ namespace Library_C__Group_Project
                     MessageBoxImage.Warning);
         }
 
+        public void SelectReservedBookError()
+        {
+            MessageBox.Show(
+                    "Please select a reserved book.",
+                    "Selection Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+        }
+        public void ReservedBookError()
+        {
+            MessageBox.Show(
+                    "Customer has already reserved or loaned this book.",
+                    "Selection Error",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+        }
+
+
         /*public bool CheckIfCustomerExists(List<Customer> customers, string customerID)
         {
             bool customerExists = false;
