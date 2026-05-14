@@ -110,9 +110,11 @@ namespace Library_C__Group_Project
         {
             BooksListBox.Items.Clear();
             string searchText = SearchTextBox.Text;
-            //Searches for books with the search text in either the title or author and adds them to the display
-            library.GetBooks().Where(b => b.Title.Contains(searchText, StringComparison.OrdinalIgnoreCase) || b.Author.Contains(searchText, 
-            StringComparison.OrdinalIgnoreCase)).ToList().ForEach(b => BooksListBox.Items.Add(b));
+            var results = library.GetBookByName(searchText);
+            foreach (var book in results)
+            {
+                BooksListBox.Items.Add(book);
+            }
         }
 
         private void ShowAllButton_Click(object sender, RoutedEventArgs e)

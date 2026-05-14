@@ -70,13 +70,12 @@ namespace Library_C__Group_Project
             }
         }
 
-        public void GetBookByName(string title, string author)
+        public List<Book> GetBookByName(string searchText)
         {
-            Book? book = Books.FirstOrDefault(b => b.Title == title || b.Author == author);
-            if (book != null)
-            {
-                book.GetDetails();
-            }
+            return Books
+            .Where(b => b.Title.Contains(searchText, StringComparison.OrdinalIgnoreCase) ||
+                        b.Author.Contains(searchText, StringComparison.OrdinalIgnoreCase))
+            .ToList();
         }
 
         public List<(Book Book, Customer Holder)> GenerateLoanedBooksReport()
