@@ -44,7 +44,7 @@ namespace Library_C__Group_Project
             Customer? customer = Customers.FirstOrDefault(c => c.CustomerID == customerId);
             if (bookToLoan != null && customer != null)
             {
-                bookToLoan.Status = false;
+                bookToLoan.setStatus(false);
                 customer.AddLoan(bookToLoan);
             }
         }
@@ -56,7 +56,7 @@ namespace Library_C__Group_Project
                 Book? bookToReturn = customer.LoanedBooks.FirstOrDefault(b => b.ISBN == isbn);
                 if (bookToReturn != null)
                 {
-                    bookToReturn.Status = true;
+                    bookToReturn.setStatus(true);
                     customer.RemoveLoan(bookToReturn);
                 }
             }
