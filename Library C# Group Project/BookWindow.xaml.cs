@@ -54,10 +54,8 @@ namespace Library_C__Group_Project
                 return;
             }
 
-            bool bookExists = library.Books.Any(b => b.ISBN == isbn); // To make sure the ISBN is unique
-            if (bookExists)
+            if (library.Validation.CheckIfBookExists(isbn))
             {
-                library.ErrorMessages.BookExistError();
                 return;
             }
 

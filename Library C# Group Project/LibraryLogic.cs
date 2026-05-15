@@ -15,7 +15,7 @@ namespace Library_C__Group_Project
 
         public LibraryLogic()
         {
-            Validation = new Validation(ErrorMessages);
+            Validation = new Validation(ErrorMessages, this);
         }
 
 
@@ -24,11 +24,16 @@ namespace Library_C__Group_Project
             return Books;
         }
 
+        public List<Customer> GetCustomers()
+        {
+            return Customers;
+        }
+
         public void Testing()
         {
-            AddBook("Harry Potter", "Rowling", "0001");
-            AddBook("Star Wars", "Lucas", "0002");
-            AddBook("The Hobbit", "Tolkien", "0003");
+            AddBook("Harry Potter", "Rowling", "0000000000001");
+            AddBook("Star Wars", "Lucas", "0000000000002");
+            AddBook("The Hobbit", "Tolkien", "0000000000003");
             Customers.Add(new Customer("Johan", "001"));
             Customers.Add(new Customer("Lars", "002"));
             Customers.Add(new Customer("Lisa", "003"));

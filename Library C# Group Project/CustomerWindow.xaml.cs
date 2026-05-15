@@ -81,10 +81,8 @@ namespace Library_C__Group_Project
                 return;
             }
 
-            bool customerExists = library.Customers.Any(c => c.CustomerID == customerID); // To make sure the customer ID is unique
-            if (customerExists)
+            if (library.Validation.CheckIfCustomerExists(customerID))
             {
-                library.ErrorMessages.CustomerExistError();
                 return;
             }
 

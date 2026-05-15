@@ -9,39 +9,47 @@ namespace Library_C__Group_Project
     public class Validation
     {
         private ErrorMessages errorMessages;
-        public Validation(ErrorMessages errorMessages) 
+        private LibraryLogic library;
+        
+        public Validation(ErrorMessages errorMessages, LibraryLogic library) 
         {
             this.errorMessages = errorMessages;
+            this.library = library;
         }
-        /*public bool CheckIfCustomerExists(List<Customer> customers, string customerID)
+        
+        public bool CheckIfCustomerExists(string customerID)
         {
             bool customerExists = false;
-            foreach (Customer customer in customers)
+            List<Customer> _customers = library.GetCustomers();
+            foreach (Customer customer in _customers)
             {
                 if (customer.CustomerID == customerID)
                 {
                     customerExists = true;
+                    library.ErrorMessages.CustomerExistError();
                     break;
                 }
             }
 
             return customerExists;
-        }  */
+        }  
 
-        /*public bool CheckIfBookExists(List<Book> books, string title)
+        public bool CheckIfBookExists(string isbn)
         {
             bool bookExists = false;
+            List<Book> books = library.GetBooks();
             foreach (Book book in books)
             {
-                if (book.Title == title)
+                if (book.ISBN == isbn)
                 {
                     bookExists = true;
+                    library.ErrorMessages.BookExistError();
                     break;
                 }
             }
 
             return bookExists;
-        }*/
+        }
 
         public bool ProcessString(String checkThisString)
         {
