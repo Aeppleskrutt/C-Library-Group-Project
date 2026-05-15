@@ -10,19 +10,30 @@ namespace Library_C__Group_Project
     {
         public List<Book> Books { get; set; } = new List<Book>();
         public List<Customer> Customers { get; set; } = new List<Customer>();
-        public ErrorHandler ErrorHandler { get; set; } = new ErrorHandler();
+        public ErrorMessages ErrorMessages { get; set; } = new ErrorMessages();
+        public Validation Validation { get; set; }
 
-        
+        public LibraryLogic()
+        {
+            Validation = new Validation(ErrorMessages, this);
+        }
+
+
         public List<Book> GetBooks()
         {
             return Books;
         }
 
+        public List<Customer> GetCustomers()
+        {
+            return Customers;
+        }
+
         public void Testing()
         {
-            AddBook("Harry Potter", "Rowling", "0001");
-            AddBook("Star Wars", "Lucas", "0002");
-            AddBook("The Hobbit", "Tolkien", "0003");
+            AddBook("Harry Potter", "Rowling", "0000000000001");
+            AddBook("Star Wars", "Lucas", "0000000000002");
+            AddBook("The Hobbit", "Tolkien", "0000000000003");
             Customers.Add(new Customer("Johan", "001"));
             Customers.Add(new Customer("Lars", "002"));
             Customers.Add(new Customer("Lisa", "003"));
