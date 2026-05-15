@@ -54,12 +54,15 @@ namespace Library_C__Group_Project
             return isEmpty;
         }
 
-        public void ProcessISBN(string ISBN)
+        public bool ProcessISBN(string ISBN)
         {
+            bool isThirteen = true;
             if (ISBN.Length != 13)
             {
-                Console.WriteLine("Needs to be 13 characters!");
+                errorMessages.ISBNError();
+                isThirteen = false;
             }
+            return isThirteen;
         }
     }
 }

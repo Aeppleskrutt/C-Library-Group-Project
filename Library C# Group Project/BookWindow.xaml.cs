@@ -61,9 +61,8 @@ namespace Library_C__Group_Project
                 return;
             }
 
-            if (isbn.Length != 13)
+            if (!library.Validation.ProcessISBN(isbn))
             {
-                library.ErrorMessages.ISBNError();
                 return;
             }
 
