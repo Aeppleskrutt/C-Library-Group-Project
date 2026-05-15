@@ -17,7 +17,6 @@ using static System.Reflection.Metadata.BlobBuilder;
 
 namespace Library_C__Group_Project
 {
-
     public partial class BookWindow : Window
     {
         private LibraryLogic library;
@@ -50,21 +49,21 @@ namespace Library_C__Group_Project
             string author = AuthorTextBox.Text;
             string isbn = ISBNTextBox.Text;
 
-            if (string.IsNullOrWhiteSpace(title) || string.IsNullOrWhiteSpace(author) || string.IsNullOrWhiteSpace(isbn)) //checks so no fields are null/empty
+            if(library.Validation.ProcessString(title) || library.Validation.ProcessString(author) || library.Validation.ProcessString(isbn)) //checks so no fields are null/empty
             {
-                library.ErrorHandler.EmptyFieldError();
                 return;
             }
+
             bool bookExists = library.Books.Any(b => b.ISBN == isbn); // To make sure the ISBN is unique
             if (bookExists)
             {
-                library.ErrorHandler.BookExistError();
+                library.ErrorMessages.BookExistError();
                 return;
             }
 
             if (isbn.Length != 13)
             {
-                library.ErrorHandler.ISBNError();
+                library.ErrorMessages.ISBNError();
                 return;
             }
 
@@ -80,7 +79,7 @@ namespace Library_C__Group_Project
         {
             if (BooksListBox.SelectedIndex == -1) //If no book is selected.
             {
-                library.ErrorHandler.RemoveBookError();
+                library.ErrorMessages.RemoveBookError();
                 return;
             }
             MessageBoxResult result = MessageBox.Show( //Shows a message box to confirm the user wants to remove the book

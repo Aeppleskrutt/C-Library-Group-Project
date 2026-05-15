@@ -10,9 +10,15 @@ namespace Library_C__Group_Project
     {
         public List<Book> Books { get; set; } = new List<Book>();
         public List<Customer> Customers { get; set; } = new List<Customer>();
-        public ErrorHandler ErrorHandler { get; set; } = new ErrorHandler();
+        public ErrorMessages ErrorMessages { get; set; } = new ErrorMessages();
+        public Validation Validation { get; set; }
 
-        
+        public LibraryLogic()
+        {
+            Validation = new Validation(ErrorMessages);
+        }
+
+
         public List<Book> GetBooks()
         {
             return Books;

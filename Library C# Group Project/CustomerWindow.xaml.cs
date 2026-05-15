@@ -76,16 +76,15 @@ namespace Library_C__Group_Project
             string name = NameTextBox.Text;
             string customerID = CustomerIDTextBox.Text;
 
-            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(customerID))
+            if (library.Validation.ProcessString(name) || library.Validation.ProcessString(customerID)) //checks so no fields are null/empty
             {
-                library.ErrorHandler.EmptyFieldError();
                 return;
             }
 
             bool customerExists = library.Customers.Any(c => c.CustomerID == customerID); // To make sure the customer ID is unique
             if (customerExists)
             {
-                library.ErrorHandler.CustomerExistError();
+                library.ErrorMessages.CustomerExistError();
                 return;
             }
 
@@ -100,7 +99,7 @@ namespace Library_C__Group_Project
         {
             if (CustomersListBox.SelectedIndex == -1) //If no customer is selected.
             {
-                library.ErrorHandler.SelectCustomerError();
+                library.ErrorMessages.SelectCustomerError();
                 return;
             }
 
@@ -131,13 +130,13 @@ namespace Library_C__Group_Project
         {
             if (CustomersListBox.SelectedItem == null)
             {
-                library.ErrorHandler.SelectCustomerError();
+                library.ErrorMessages.SelectCustomerError();
                 return;
             }
 
             if (AvailableBooksComboBox.SelectedItem == null)
             {
-                library.ErrorHandler.SelectAvailableBookError();
+                library.ErrorMessages.SelectAvailableBookError();
                 return;
             }
 
@@ -160,13 +159,13 @@ namespace Library_C__Group_Project
         {
             if (CustomersListBox.SelectedItem == null)
             {
-                library.ErrorHandler.SelectCustomerError();
+                library.ErrorMessages.SelectCustomerError();
                 return;
             }
 
             if (LoanedBooksListBox.SelectedItem == null)
             {
-                library.ErrorHandler.SelectLoandBookError();
+                library.ErrorMessages.SelectLoandBookError();
                 return;
             }
 
@@ -184,12 +183,12 @@ namespace Library_C__Group_Project
         {
             if (CustomersListBox.SelectedItem == null)
             {
-                library.ErrorHandler.SelectCustomerError();
+                library.ErrorMessages.SelectCustomerError();
                 return;
             }
             if (ReservedBooksComboBox.SelectedItem == null)
             {
-                library.ErrorHandler.SelectReservedBookError();
+                library.ErrorMessages.SelectReservedBookError();
                 return;
             }
 
@@ -197,7 +196,7 @@ namespace Library_C__Group_Project
             Book selectedBook = (Book)ReservedBooksComboBox.SelectedItem;
             if (selectedBook.ReservationQueue.Contains(selectedCustomer) || selectedCustomer.LoanedBooks.Contains(selectedBook))
             {
-                library.ErrorHandler.ReservedBookError();
+                library.ErrorMessages.ReservedBookError();
                 return;
             }
             selectedBook.ReservationQueue.Enqueue(selectedCustomer);
