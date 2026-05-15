@@ -59,6 +59,12 @@ namespace Library_C__Group_Project
                 {
                     bookToReturn.SetStatus(true);
                     customer.RemoveLoan(bookToReturn);
+                    if (bookToReturn.ReservationQueue.Count > 0)
+                    {
+                        Customer nextCustomer = bookToReturn.ReservationQueue.Dequeue();
+                        bookToReturn.Status = false;
+                        nextCustomer.AddLoan(bookToReturn);
+                    }
                 }
             }
         }
