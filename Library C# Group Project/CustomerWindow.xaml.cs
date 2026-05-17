@@ -110,7 +110,7 @@ namespace Library_C__Group_Project
             if (result == MessageBoxResult.Yes)
             {
                 Customer selectedCustomer = (Customer)CustomersListBox.SelectedItem;
-                library.Customers.Remove(selectedCustomer); //Removes said customer from the library.
+                library.RemoveCustomer(selectedCustomer.CustomerID); //Removes said customer from the library.
                 RefreshCustomerList();
             }
         }
