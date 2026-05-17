@@ -86,7 +86,7 @@ namespace Library_C__Group_Project
                 return;
             }
 
-            library.Customers.Add(new Customer(name, customerID)); //No method to add a customer?
+            library.AddCustomer(name, customerID); //Adds the customer to the library logic
             RefreshCustomerList();
 
             NameTextBox.Clear();
