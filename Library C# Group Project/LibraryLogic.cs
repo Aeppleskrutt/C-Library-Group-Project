@@ -85,6 +85,15 @@ namespace Library_C__Group_Project
             Customers.Add(new Customer(name, customerId));
         }
 
+        public void RemoveCustomer(string customerId)
+        {
+            Customer? customerToRemove = Customers.FirstOrDefault(c => c.CustomerID == customerId);
+            if (customerToRemove != null)
+            {
+                Customers.Remove(customerToRemove);
+            }
+        }
+
         public List<Book> GetCustomerLoans(string customerId)
         {
             Customer? customer = Customers.FirstOrDefault(c => c.CustomerID == customerId);
