@@ -85,13 +85,14 @@ namespace Library_C__Group_Project
             Customers.Add(new Customer(name, customerId));
         }
 
-        public void GetCustomerLoans(string customerId)
+        public List<Book> GetCustomerLoans(string customerId)
         {
             Customer? customer = Customers.FirstOrDefault(c => c.CustomerID == customerId);
             if (customer != null)
             {
-                customer.GetInfo();
+                return customer.LoanedBooks;
             }
+            return new List<Book>();
         }
 
         public List<Book> GetBookByName(string searchText)
