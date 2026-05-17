@@ -18,10 +18,10 @@ namespace Library_C__Group_Project
     {
         private LibraryLogic library;
 
-        public CustomerWindow(LibraryLogic librarylogic)
+        public CustomerWindow(LibraryLogic libraryLogic)
         {
             InitializeComponent();
-            library = librarylogic;
+            library = libraryLogic;
 
             RefreshCustomerList();
             RefreshAvailableBooks();
