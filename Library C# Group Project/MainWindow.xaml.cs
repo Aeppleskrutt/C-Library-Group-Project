@@ -20,7 +20,6 @@ public partial class MainWindow : Window
 
     public MainWindow()
     {
-        library.Testing();
         foreach(Customer customer in library.Customers)
         {
             customer.CheckLateReturns();
