@@ -62,10 +62,10 @@ namespace Library_C__Group_Project
             }
         }
 
-        private void RefreshLoanedBooks(Customer customer) //To make loaned books display correctly
+        private void RefreshLoanedBooks(List<Book> loanedBooks) //To make loaned books display correctly
         {
             LoanedBooksListBox.Items.Clear();
-            foreach (Book book in customer.LoanedBooks) //Checks specific customers for their loaned books
+            foreach (Book book in loanedBooks) //Checks specific customers for their loaned books
             {
                 LoanedBooksListBox.Items.Add(book);
             }
@@ -120,7 +120,10 @@ namespace Library_C__Group_Project
             if (CustomersListBox.SelectedItem != null)
             {
                 Customer selectedCustomer = (Customer)CustomersListBox.SelectedItem;
-                RefreshLoanedBooks(selectedCustomer); //Adds the loaned books of the selected customer to the list
+
+                // Use the business logic layer method instead of directly accessing the customer object
+                List<Book> loanedBooks = library.GetCustomerLoans(selectedCustomer.CustomerID);
+                RefreshLoanedBooks(loanedBooks);
             }
         }
 
@@ -142,7 +145,8 @@ namespace Library_C__Group_Project
             Book selectedBook = (Book)AvailableBooksComboBox.SelectedItem;
             library.LoanBook(selectedBook.ISBN, selectedCustomer.CustomerID);
 
-            RefreshLoanedBooks(selectedCustomer);
+            List<Book> loanedBooks = library.GetCustomerLoans(selectedCustomer.CustomerID);
+            RefreshLoanedBooks(loanedBooks);
             RefreshAvailableBooks();
             RefreshReservedBooks();
             /*foreach (Customer customer in library.Customers)
@@ -171,7 +175,8 @@ namespace Library_C__Group_Project
             Book selectedBook = (Book)LoanedBooksListBox.SelectedItem;
             library.ReturnBook(selectedBook.ISBN, selectedCustomer.CustomerID);
 
-            RefreshLoanedBooks(selectedCustomer);
+            List<Book> loanedBooks = library.GetCustomerLoans(selectedCustomer.CustomerID);
+            RefreshLoanedBooks(loanedBooks);
             RefreshAvailableBooks();
             RefreshReservedBooks();
             //Refreshes the lists to make sure loaned/available books display correctly
