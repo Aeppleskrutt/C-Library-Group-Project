@@ -24,8 +24,8 @@ namespace Library_C__Group_Project
 
         public void AddLoan(Book book)
         {
-            //book.LoanDate = new DateTime(2026, 4, 1);
-            book.LoanDate = DateTime.Now;
+            book.LoanDate = new DateTime(2026, 4, 1);
+            //book.LoanDate = DateTime.Now;
             LoanedBooks.Add(book);
         }
 
@@ -55,13 +55,6 @@ namespace Library_C__Group_Project
             CustomerFee = LateFeeDouble.ToString("0"); //ToString so the text can be showned in the window
         }
 
-        public void GetInfo()
-        {
-            foreach (Book book in LoanedBooks)
-            {
-                Console.WriteLine($"Title: {book.Title}, Author: {book.Author}, ISBN: {book.ISBN}");
-            }
-        }
         public override string ToString() //To let customer information be shown properaly in GUI
         {
             return $"{Name} | ID: {CustomerID} | Fee: {CustomerFee}";
