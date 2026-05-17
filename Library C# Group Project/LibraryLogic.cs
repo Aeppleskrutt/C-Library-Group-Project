@@ -79,6 +79,12 @@ namespace Library_C__Group_Project
                 }
             }
         }
+
+        public void AddCustomer(string name, string customerId)
+        {
+            Customers.Add(new Customer(name, customerId));
+        }
+
         public void GetCustomerLoans(string customerId)
         {
             Customer? customer = Customers.FirstOrDefault(c => c.CustomerID == customerId);

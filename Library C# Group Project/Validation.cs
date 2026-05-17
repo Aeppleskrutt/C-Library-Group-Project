@@ -16,23 +16,6 @@ namespace Library_C__Group_Project
             this.errorMessages = errorMessages;
             this.library = library;
         }
-        
-        public bool CheckIfCustomerExists(string customerID)
-        {
-            bool customerExists = false;
-            List<Customer> _customers = library.GetCustomers();
-            foreach (Customer customer in _customers)
-            {
-                if (customer.CustomerID == customerID)
-                {
-                    customerExists = true;
-                    library.ErrorMessages.CustomerExistError();
-                    break;
-                }
-            }
-
-            return customerExists;
-        }  
 
         public bool CheckIfBookExists(string isbn)
         {
@@ -51,16 +34,22 @@ namespace Library_C__Group_Project
             return bookExists;
         }
 
-        public bool ProcessString(String checkThisString)
+        public bool CheckIfCustomerExists(string customerID)
         {
-            bool isEmpty = false;
-            if (string.IsNullOrWhiteSpace(checkThisString))
+            bool customerExists = false;
+            List<Customer> _customers = library.GetCustomers();
+            foreach (Customer customer in _customers)
             {
-                errorMessages.EmptyFieldError();
-                isEmpty = true;
-            }                       
-            return isEmpty;
-        }
+                if (customer.CustomerID == customerID)
+                {
+                    customerExists = true;
+                    library.ErrorMessages.CustomerExistError();
+                    break;
+                }
+            }
+
+            return customerExists;
+        }  
 
         public bool ProcessISBN(string ISBN)
         {
@@ -71,6 +60,17 @@ namespace Library_C__Group_Project
                 isThirteen = false;
             }
             return isThirteen;
+        }
+
+        public bool ProcessString(String checkThisString)
+        {
+            bool isEmpty = false;
+            if (string.IsNullOrWhiteSpace(checkThisString))
+            {
+                errorMessages.EmptyFieldError();
+                isEmpty = true;
+            }                       
+            return isEmpty;
         }
     }
 }
