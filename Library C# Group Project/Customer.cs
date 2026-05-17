@@ -37,11 +37,13 @@ namespace Library_C__Group_Project
 
         public void CheckLateReturns()
         {
+            //This method is called at start of program in MainWindow
             double LateFeeDouble = 0;
             foreach (Book book in LoanedBooks)
             {
-                DateTime? _loanDate = book.LoanDate;
-                DateTime? returnDate = _loanDate?.AddDays(30);
+                DateTime? _loanDate = book.LoanDate; //_loanDate is set to when the specific book was loand
+                DateTime? returnDate = _loanDate?.AddDays(30); //returnDate is set to 30 days after the book was loand
+                //The return date is subtracted from todays date, if the amount of days is larger then 0 the fee will be added
                 double overDueDays = returnDate.HasValue ? (DateTime.Now.Date - returnDate.Value.Date).TotalDays : 0;
 
                 if (overDueDays > 0)
@@ -50,7 +52,7 @@ namespace Library_C__Group_Project
                 }
             }
 
-            CustomerFee = LateFeeDouble.ToString("0");
+            CustomerFee = LateFeeDouble.ToString("0"); //ToString so the text can be showned in the window
         }
 
         public void GetInfo()
